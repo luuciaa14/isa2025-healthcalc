@@ -13,4 +13,4 @@ En este apartado se enumerarán los casos de prueba desarrollados para que la ca
 - Solo se aceptarán las entradas **'M'** (man) o **'W'** (woman), siendo estas correspondientes al sexo biológico predominante del individuo cuyos datos están siendo utilizados. Cualquier otro valor introducido provocará una excepción.
 
 # PRÁCTICA 2
-![Diagrama de casos de uso](c\doc\practica2isa.jpg)
+![Diagrama de casos de uso](doc/practica2isa.jpg)
