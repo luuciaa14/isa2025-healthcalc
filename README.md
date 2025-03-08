@@ -23,3 +23,7 @@ En este apartado se enumerarán los casos de prueba desarrollados para que la ca
 
 ![mvn test](doc/mvntest.jpg)
 
+## Commits realizados
+- Hasta ahora, los commits realizados son los siguientes (vistos con gitk):
+
+![commits](doc/commits.jpg)
