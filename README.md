@@ -17,3 +17,9 @@ En este apartado se enumerarán los casos de prueba desarrollados para que la ca
 
 ### 4. Comprobación de la edad
 - El valor introducido para la edad debe ser un número entero entre **1 y 120** (inclusives). Cualquier otro tipo de dato provocará una excepción en la calculadora.
+
+## Ejecución de los casos de prueba utilizando maven
+- Una vez realizada la implementacion de los casos de prueba y de los métodos requeridos, realizamos los tests utilizando en el cmd del ordenador **mvn test**. A continuación, se adjunta una imagen del resultado obtenido, comprobando que los tests se han pasado correctamente.
+
+![mvn test](doc/mvntest.png)
+
