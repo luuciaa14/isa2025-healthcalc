@@ -23,44 +23,48 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.7.1</version>
+        <scope>test</scope>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.7.1</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
   <build>
     <plugins>
-    <plugin>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.5.2</version>
-      <configuration>
-        <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
-          <disable>false</disable>
-          <version>3.0</version>
-          <usePhrasedFileName>false</usePhrasedFileName>
-          <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
-          <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
-          <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-        </statelessTestsetReporter>
-        <consoleOutputReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5ConsoleOutputReporter">
-          <disable>false</disable>
-          <encoding>UTF-8</encoding>
-          <usePhrasedFileName>false</usePhrasedFileName>
-        </consoleOutputReporter>
-        <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoReporter">
-          <disable>false</disable>
-          <usePhrasedFileName>false</usePhrasedFileName>
-          <usePhrasedClassNameInRunning>true</usePhrasedClassNameInRunning>
-          <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
-        </statelessTestsetInfoReporter>
-      </configuration>
-    </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <useModulePath>false</useModulePath> <!-- Important to avoid module issues -->
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
