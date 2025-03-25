@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>uma.isa</groupId>
   <artifactId>project-healthcalc</artifactId>
@@ -16,56 +17,63 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- BOM para asegurar versiones consistentes -->
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>5.11.4</version>
-        <type>pom</type>
         <scope>import</scope>
+        <type>pom</type>
       </dependency>
-
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.7.1</version>
-        <scope>test</scope>
-      </dependency>
-      
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.7.1</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>io.cucumber</groupId>
-        <artifactId>cucumber-java</artifactId>
-        <version>7.14.0</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>io.cucumber</groupId>
-        <artifactId>cucumber-junit</artifactId>
-        <version>7.14.0</version>
-        <scope>test</scope>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
+
+  <dependencies>
+    <!-- JUnit 5 (Incluye API, Engine y Params) -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Cucumber Java -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.14.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite-api</artifactId>
+      <version>1.10.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Cucumber JUnit (Para JUnit 5) -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit-platform-engine</artifactId>
+      <version>7.14.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.0.0-M7</version> <!-- Versión más estable -->
         <configuration>
-          <useModulePath>false</useModulePath> <!-- Important to avoid module issues -->
+          <includes>
+            <include>**/*.java</include> <!-- Ejecuta todas las pruebas -->
+          </includes>
         </configuration>
       </plugin>
     </plugins>
   </build>
 
 </project>
+
