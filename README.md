@@ -75,89 +75,89 @@ E3: Guardar el peso ideal en el perfil del usuario si la aplicación permite el 
 
 ##  IDEAL WEIGHT
 ### Historia de usuario
-**Como** usuario de la calculadora de salud
+- **Como** usuario de la calculadora de salud
 
-**Quiero** calcular el peso ideal de una persona basado en su altura y género
+- **Quiero** calcular el peso ideal de una persona basado en su altura y género
 
-**Para** poder determinar si mi peso es saludable según la fórmula de Lorentz
+- **Para** poder determinar si mi peso es saludable según la fórmula de Lorentz
 
 ### Criterios de aceptación
 
 #### Escenario 1: Calcular el peso ideal para un hombre
-**Dado** que el usuario ha ingresado su altura (180 cm) y género (M)
+- **Dado** que el usuario ha ingresado su altura (180 cm) y género (M)
 
-**Cuando** el sistema calcula el peso ideal
+- **Cuando** el sistema calcula el peso ideal
 
-**Entonces** el sistema debe mostrar un peso ideal de 80 kg según la fórmula de Lorentz
+- **Entonces** el sistema debe mostrar un peso ideal de 80 kg según la fórmula de Lorentz
 
 #### Escenario 2: Calcular el peso ideal para una mujer
-**Dado** que el usuario ha ingresado su altura (165 cm) y género (W)
+- **Dado** que el usuario ha ingresado su altura (165 cm) y género (W)
 
-**Cuando** el sistema calcula el peso ideal
+- **Cuando** el sistema calcula el peso ideal
 
-**Entonces** el sistema debe mostrar un peso ideal de 62,5 kg según la fórmula de Lorentz
+- **Entonces** el sistema debe mostrar un peso ideal de 62,5 kg según la fórmula de Lorentz
 
 #### Escenario 3: Error debido a altura inválida
-**Dado** que el usuario ha ingresado una altura inválida (20 cm)
+- **Dado** que el usuario ha ingresado una altura inválida (20 cm)
 
-**Cuando** el sistema intenta calcular el peso ideal
+- **Cuando** el sistema intenta calcular el peso ideal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "La altura debe estar entre 30 cm y 250 cm"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "La altura debe estar entre 30 cm y 250 cm"
 
 #### Escenario 4: Error debido a género inválido
-**Dado** que el usuario ha ingresado un género inválido (X)
+- **Dado** que el usuario ha ingresado un género inválido (X)
 
-**Cuando** el sistema intenta calcular el peso ideal
+- **Cuando** el sistema intenta calcular el peso ideal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "El género debe ser M para hombres o W para mujeres. Revise mayúsculas"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "El género debe ser M para hombres o W para mujeres. Revise mayúsculas"
 
 ## BASAL METABOLIC RATE
 ### Historia de usuario
-**Como** usuario de la calculadora de salud
+- **Como** usuario de la calculadora de salud
 
-**Quiero** calcular la tasa metabólica basal de una persona basada en su peso, altura, edad y género
+- **Quiero** calcular la tasa metabólica basal de una persona basada en su peso, altura, edad y género
 
-**Para** poder determinar la cantidad de calorías que necesito para mantener mi cuerpo en reposo
+- **Para** poder determinar la cantidad de calorías que necesito para mantener mi cuerpo en reposo
 
 ### Criterios de aceptación
 #### Escenario 1: Calcular BMR para un hombre
-**Dado** que el usuario ha ingresado su peso (70 kg), altura (175 cm), edad (30 años) y género (M)
+- **Dado** que el usuario ha ingresado su peso (70 kg), altura (175 cm), edad (30 años) y género (M)
 
-**Cuando** el sistema calcula la tasa metabólica basal
+- **Cuando** el sistema calcula la tasa metabólica basal
 
-**Entonces** el sistema debe mostrar una TMB de 1.786 kcal/día usando la fórmula de Harris-Benedict
+- **Entonces** el sistema debe mostrar una TMB de 1.786 kcal/día usando la fórmula de Harris-Benedict
 
 #### Escenario 2: Calcular BMR para una mujer
-**Dado** que el usuario ha ingresado su peso (60 kg), altura (160 cm), edad (28 años) y género (W)
+- **Dado** que el usuario ha ingresado su peso (60 kg), altura (160 cm), edad (28 años) y género (W)
 
-**Cuando** el sistema calcula la tasa metabólica basal
+- **Cuando** el sistema calcula la tasa metabólica basal
 
-**Entonces** el sistema debe mostrar una TMB de 1.414 kcal/día usando la fórmula de Harris-Benedict
+- **Entonces** el sistema debe mostrar una TMB de 1.414 kcal/día usando la fórmula de Harris-Benedict
 
 #### Escenario 3: Error debido a peso inválido
-**Dado** que el usuario ha ingresado un peso inválido (1 kg)
+- **Dado** que el usuario ha ingresado un peso inválido (1 kg)
 
-**Cuando** el sistema intenta calcular la tasa metabólica basal
+- **Cuando** el sistema intenta calcular la tasa metabólica basal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "El peso debe estar entre 3 kg y 400 kg"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "El peso debe estar entre 3 kg y 400 kg"
 
 #### Escenario 4: Error debido a altura inválida
-**Dado** que el usuario ha ingresado una altura inválida (10 cm)
+- **Dado** que el usuario ha ingresado una altura inválida (10 cm)
 
-**Cuando** el sistema intenta calcular la tasa metabólica basal
+- **Cuando** el sistema intenta calcular la tasa metabólica basal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "La altura debe estar entre 30 cm y 250 cm"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "La altura debe estar entre 30 cm y 250 cm"
 
 #### Escenario 5: Error debido a edad inválida
-**Dado** que el usuario ha ingresado una edad inválida (0 años)
+- **Dado** que el usuario ha ingresado una edad inválida (0 años)
 
-**Cuando** el sistema intenta calcular la tasa metabólica basal
+- **Cuando** el sistema intenta calcular la tasa metabólica basal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "La edad debe estar entre 1 año y 120 años"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "La edad debe estar entre 1 año y 120 años"
 
 #### Escenario 6: Error debido a género inválido
-**Dado** que el usuario ha ingresado un género inválido (X)
+- **Dado** que el usuario ha ingresado un género inválido (X)
 
-**Cuando** el sistema intenta calcular la tasa metabólica basal
+- **Cuando** el sistema intenta calcular la tasa metabólica basal
 
-**Entonces** el sistema debe lanzar una excepción con el mensaje "El género debe ser M para hombres o W para mujeres. Revise mayúsculas"
+- **Entonces** el sistema debe lanzar una excepción con el mensaje "El género debe ser M para hombres o W para mujeres. Revise mayúsculas"
