@@ -157,7 +157,16 @@ E3: Guardar el peso ideal en el perfil del usuario si la aplicación permite el 
 
 #### Escenario 6: Error debido a género inválido
 - **Dado** que el usuario ha ingresado un género inválido (X)
-
+git 
 - **Cuando** el sistema intenta calcular la tasa metabólica basal
 
 - **Entonces** el sistema debe lanzar una excepción con el mensaje "El género debe ser M para hombres o W para mujeres. Revise mayúsculas"
+
+# PRÁCTICA 4
+## Intrefaz gráfica de usuario
+### Balsamiq
+En primer lugar, se ha realizado un boceto de la interfaz de la calculadora.
+![Pantalla calculadora balsamiq](doc/pantalla_calculadora.png)
+
+Para que la aplicación funcione correctamente, se ha utilizado windows builder para realizar la interfaz gráfica definitica.
+![Captura interfaz de la aplicación](doc/captura_interfaz.png)
