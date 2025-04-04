@@ -1,22 +1,9 @@
 package healthcalc;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextArea;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.Checkbox;
-import java.awt.Rectangle;
-import java.awt.Point;
-import javax.swing.JLabel;
-import java.awt.Component;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Vista extends JFrame {
 
@@ -29,6 +16,9 @@ public class Vista extends JFrame {
 	private JTextField tfTasaMetabolica;
 	private JButton bCalcularPesoIdeal;
 	private JButton bCalcularTasaMetabolica;
+	private JButton bMujer;
+	private JButton bHombre;
+	private char generoSeleccionado = 'M';
 
 	/**
 	 * Launch the application.
@@ -64,15 +54,31 @@ public class Vista extends JFrame {
 		lblGenero.setBounds(86, 71, 81, 25);
 		contentPane.add(lblGenero);
 		
-		JButton bMujer = new JButton("Mujer");
+		bMujer = new JButton("Mujer");
 		bMujer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		bMujer.setBounds(20, 106, 98, 21);
+		bMujer.setBounds(20, 104, 98, 25);
 		contentPane.add(bMujer);
 		
-		JButton bHombre = new JButton("Hombre");
+		bHombre = new JButton("Hombre");
 		bHombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		bHombre.setBounds(124, 106, 98, 21);
+		bHombre.setBounds(124, 104, 98, 25);
 		contentPane.add(bHombre);
+		
+		bMujer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                generoSeleccionado = 'W';
+                bMujer.setBackground(Color.LIGHT_GRAY);
+                bHombre.setBackground(null);
+            }
+        });
+		
+		bHombre.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                generoSeleccionado = 'M';
+                bHombre.setBackground(Color.LIGHT_GRAY);
+                bMujer.setBackground(null);
+            }
+        });
 		
 		JLabel lblAltura = new JLabel("Altura");
 		lblAltura.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -181,6 +187,10 @@ public class Vista extends JFrame {
 
     public JButton getBCalcularTasaMetabolica() {
         return bCalcularTasaMetabolica;
+    }
+    
+    public char getGeneroSeleccionado() {
+    	return generoSeleccionado;
     }
 	
 }
