@@ -14,7 +14,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de altura fuera del rango establecido")
 	public void testInvalidHeightException(){
 		// Arrange:
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
 		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(20, 'M'));
 		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(270, 'M'));
@@ -27,7 +27,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de altura dentro del rango establecido")
 	public void testValidHeightException(){
 		// Arrange:
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
 		assertDoesNotThrow(() -> c.idealWeight(30, 'M'));
 		assertDoesNotThrow(() -> c.idealWeight(170, 'M'));
@@ -42,7 +42,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de género no válido")
 	public void testInvalidGender(){
 		// Arrange:
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
 		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'A'));
 		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'B'));
@@ -59,7 +59,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de género válido")
 	public void testValidGender(){
 		// Arrange
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
 		assertDoesNotThrow(() -> c.idealWeight(170, 'M'));
 		assertDoesNotThrow(() -> c.idealWeight(170, 'W'));
@@ -72,7 +72,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de peso inválido")
 	public void testInvalidWeight(){
 		// Arrange
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
 		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(2, 170, 25, 'M'));
 		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(450, 170, 25, 'M'));
@@ -82,7 +82,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de peso válido")
 	public void testValidWeight(){
 		// Arrange
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
 		assertDoesNotThrow(()-> c.basalMetabolicRate(20, 170, 25, 'M'));
 		assertDoesNotThrow(()-> c.basalMetabolicRate(150, 170, 25, 'M'));
@@ -92,7 +92,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de edad inválida")
 	public void testInvalidAge(){
 		// Arrange
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
 		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 0, 'M'));
 		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 130, 'M'));
@@ -102,7 +102,7 @@ public class HealthCalcTest {
 	@DisplayName("Test de edad válida")
 	public void testValidAge(){
 		// Arrange
-		HealthCalcImpl c = new HealthCalcImpl();
+		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
 		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, 'M'));
 		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 50, 'M'));

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Controlador {
 	
 	private Vista vista;
-	private HealthCalcImpl modelo;
+	private HealthCalcImpl modelo = HealthCalcImpl.getInstancia();
 	
 	// Constructor
 	public Controlador(Vista vista, HealthCalcImpl modelo) {

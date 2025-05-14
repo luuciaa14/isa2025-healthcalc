@@ -2,6 +2,17 @@ package healthcalc;
 
 public class HealthCalcImpl implements HealthCalc {
 
+    private static HealthCalcImpl instancia;
+
+    private HealthCalcImpl() {}
+
+    public static HealthCalcImpl getInstancia() {
+        if (instancia == null) {
+            instancia = new HealthCalcImpl();
+        }
+        return instancia;
+    }
+
     public float idealWeight(int height, char gender) throws Exception {
         // Verificar altura
         if(height<30 || height>250){

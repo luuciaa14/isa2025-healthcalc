@@ -15,7 +15,7 @@ public class BasalMetabolicRateSteps {
     private Exception exception;
 
     public BasalMetabolicRateSteps() {
-        healthCalc = new HealthCalcImpl();
+        healthCalc = HealthCalcImpl.getInstancia();
     }
 
     @Given("a {word} weighing {float} kg, with a height of {int} cm, and aged {int}")

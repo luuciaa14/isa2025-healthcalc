@@ -13,7 +13,7 @@ public class IdealWeightSteps {
     private Exception exception;
 
     public IdealWeightSteps() {
-        healthCalc = new HealthCalcImpl();
+        healthCalc = HealthCalcImpl.getInstancia();
     }
 
     @Given("a {word} with a height of {int} cm")
