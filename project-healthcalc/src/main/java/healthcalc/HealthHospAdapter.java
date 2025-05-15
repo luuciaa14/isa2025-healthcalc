@@ -2,7 +2,7 @@ package healthcalc;
 
 public class HealthHospAdapter implements HealthHospital {
 
-    private static HealthCalc c;
+    private static HealthCalcImpl c;
 
     private HealthHospAdapter() {
         c = HealthCalcImpl.getInstancia();
