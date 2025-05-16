@@ -26,6 +26,6 @@ public interface HealthHospital {
 	 * @return 		 	The ideal weight of the person (kg).
 	 * @throws Exception 
 	 */
-	public int pesoIdeal(char genero, float altura) throws Exception;
+	public int pesoIdeal(float altura, char genero) throws Exception;
 	
 }
