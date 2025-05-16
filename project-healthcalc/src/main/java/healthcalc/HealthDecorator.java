@@ -1,21 +1,24 @@
 package healthcalc;
 
-public class HealthEuropa extends HealthDecorator {
+public class HealthDecorator implements HealthHospital {
 
-    public static String[] m = {"metros", "gramos"};
+    public HealthStatsProxy c;
+    public static String[] m = {"centímetros", "kilogramos"};
 
-    public HealthEuropa(HealthStatsProxy c) {
-        super(c);
+    public HealthDecorator(HealthStatsProxy c) {
+        this.c = c;
     }
 
     public int pesoIdeal(float altura, char genero) throws Exception {
-        int pesoId = c.pesoIdeal(altura, genero);
-        return pesoId;
+        float a = altura*1000;
+        return c.pesoIdeal(a, genero);
     }
 
     public double bmr(char genero, int edad, float altura, int peso) throws Exception {
-        double bmr = c.bmr(genero, edad, altura, peso);
-        msj(altura, peso, bmr);
+        float a = altura*1000;
+        int p = peso/1000;
+        double bmr = c.bmr(genero, edad, a, p);
+        msj(a, p, bmr);
         return bmr;
     }
 
@@ -28,5 +31,5 @@ public class HealthEuropa extends HealthDecorator {
     public String[] m() {
         return m;
     }
-    
+
 }

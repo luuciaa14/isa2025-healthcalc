@@ -1,24 +1,31 @@
 package healthcalc;
 
-public class HealthAmerica implements HealthHospital{
+public class HealthAmerica extends HealthDecorator {
 
-    private HealthStatsProxy c;
-    public static String[] m = new String[2];
+    public static String[] m = {"pies", "libras"};
 
     public HealthAmerica(HealthStatsProxy c) {
-        this.c = c;
-        m[0] = "pies";
-        m[1] = "libras";
+        super(c);
     }
 
     public int pesoIdeal(float altura, char genero) throws Exception {
-        int pesoId = c.pesoIdeal(altura, genero);
-        return pesoId;
+        float a = altura/3.2808f;
+        int p = c.pesoIdeal(a, genero); 
+        return p;
     }
 
     public double bmr(char genero, int edad, float altura, int peso) throws Exception {
-        double bmr = c.bmr(genero, edad, altura, peso);
+        float a = altura/3.2808f;
+        int p = (int) (peso*1000/2.20462);
+        double bmr = c.bmr(genero, edad, a, p);
+        msj(a, p, bmr);
         return bmr;
+    }
+
+    public void msj(float altura, int peso, double bmr) {
+        System.out.println("Para una altura de " + altura + " " + 
+        m[0].toString() + " y " + peso + " " + m[1].toString() + 
+        " su BMR es de " + Double.toString(bmr));
     }
 
     public String[] uds() {
