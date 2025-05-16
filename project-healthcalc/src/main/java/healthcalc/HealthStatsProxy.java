@@ -13,7 +13,7 @@ public class HealthStatsProxy implements HealthHospital, HealthStats {
     private int hombresBMR;
     private int mujeresBMR;
 
-    private HealthStatsProxy(HealthHospital c) {
+    public HealthStatsProxy(HealthHospital c) {
         this.c = c;
         alturaIdealWeight = 0;
         alturaBMR = 0;
