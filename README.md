@@ -170,3 +170,20 @@ En primer lugar, se ha realizado un boceto de la interfaz de la calculadora.
 
 Para que la aplicación funcione correctamente, se ha utilizado windows builder para realizar la interfaz gráfica definitica.
 ![Captura interfaz de la aplicación](doc/captura_interfaz.png)
+
+# PRÁCTICA 6
+## Patrón Singleton
+Hemos aplicado el patrón de tal manera que solo se permita tener una instancia de la calculadora.
+![Patrón Singleton](design_patterns/PatronSingleton.png)
+
+## Patrón Adapter
+El patrón Adapter ha sido elegido ya que se nos proporciona una interfaz unificada que permite a los objetos con interfaz incompatible colaborar. Tenemos unca clase existente pero su interfaz no concuerda con lo que necesitamos, de manera que *adaptaremos* sus objetos.
+![Patrón Adapter](design_patterns/PatronAdapter.png)
+
+## Patron Proxy
+El patrón Proxy ha sido elegido ya que nos permite proporcionar un sustituto para otro objeto, controlando el acceso al objeto original. Tenemos una interfaz *HealthStats* cuyo objetivo es el de llevar un registro de todos los movimientos hechos en la calculadora, es decir, buscamos controlar el acceso a nuestra calculadora.
+![Patrón Proxy](design_patterns/PatronProxy.png)
+
+## Patron Decorator
+El patrón Proxy ha sido elegido ya que nos permite añadir nuevos comportamientos a los objetos, colocando estos objetos dentro de otros envolventes especiales que contienen los comportamientos. De esta manera, añadimos los nuevos comportamientos de nuestra calcualdora, dependiendo de si se va a usar en América o en Europa.
+![Patron Adapter](design_patterns/PatronDecorator.png)
