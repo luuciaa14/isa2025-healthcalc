@@ -10,7 +10,7 @@ public class BasalMetabolicRateSteps {
     private float weight;
     private int height;
     private int age;
-    private char gender;
+    private Gender gender;
     private float result;
     private Exception exception;
 
@@ -23,7 +23,7 @@ public class BasalMetabolicRateSteps {
         this.weight = weight;
         this.height = height;
         this.age = age;
-        this.gender = genderStr.equalsIgnoreCase("man") ? 'M' : 'W';
+        this.gender = genderStr.equalsIgnoreCase("man") ? Gender.MALE : Gender.FEMALE;
     }
 
     @When("I calculate the BMR")

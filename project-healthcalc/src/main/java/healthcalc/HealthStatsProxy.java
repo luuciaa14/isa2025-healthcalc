@@ -26,9 +26,8 @@ public class HealthStatsProxy implements HealthHospital, HealthStats {
         mujeresBMR = 0;
     }
 
-    public int pesoIdeal(float altura, char genero) throws Exception {
-
-        if (genero == 'M') {
+    public int pesoIdeal(float altura, Gender genero) throws Exception {
+        if (genero == Gender.MALE) {
             hombresIdealWeight++;
         } else {
             mujeresIdealWeight++;
@@ -38,11 +37,11 @@ public class HealthStatsProxy implements HealthHospital, HealthStats {
         return c.pesoIdeal(altura, genero);
     }
 
-    public double bmr(char genero, int edad, float altura, int peso) throws Exception {
-        if (genero == 'M') {
-            hombresIdealWeight++;
+    public double bmr(Gender genero, int edad, float altura, int peso) throws Exception {
+        if (genero == Gender.MALE) {
+            hombresBMR++;
         } else {
-            mujeresIdealWeight++;
+            mujeresBMR++;
         }
         this.edad += edad;
         alturaBMR += altura;
@@ -58,33 +57,27 @@ public class HealthStatsProxy implements HealthHospital, HealthStats {
     }
 
     public float pesoMedio() {
-        float pesoM = peso / (hombresBMR + mujeresBMR);
-        return pesoM;
+        return peso / (hombresBMR + mujeresBMR);
     }
 
     public float edadMedia() {
-        float edadM = edad / (hombresBMR + mujeresBMR);
-        return edadM;
+        return edad / (hombresBMR + mujeresBMR);
     }
 
     public float bmrMedio() {
-        float bmrM = bmr / (hombresBMR + mujeresBMR);
-        return bmrM;
+        return bmr / (hombresBMR + mujeresBMR);
     }
 
-    public int numHombres() {
-        int numH = hombresBMR + hombresIdealWeight;
-        return numH;
+    public int numSexoH() {
+        return hombresBMR + hombresIdealWeight;
     }
 
-    public int numMujeres() {
-        int numM = mujeresBMR + mujeresIdealWeight;
-        return numM;
+    public int numSexoM() {
+        return mujeresBMR + mujeresIdealWeight;
     }
 
-    public int numHM() {
-        int HM = hombresBMR + mujeresBMR;
-        return HM;
+    public int numTotalPacientes() {
+        return hombresBMR + mujeresBMR;
     }
-    
 }
+

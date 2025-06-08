@@ -1,0 +1,38 @@
+REFACTORINGS
+
+1. Género (char -> enum)
+
+	* Bad Smell
+		Este refactoring aborda principalmente el problema conocido como Primitive Obssesion, 
+		que consiste en el uso excesivo de tipos primitivos para representar información que 
+		podría encapsularse mejor mediante tipos específicos o estructuras más apropiadas.
+	* Refactorings aplicados
+		Introduce Enum: Se ha introducido un tipo enum para representar un conjunto limitado
+		de valores concretos.
+		Replace Value with Object: Se ha sustituido el uso de un valor primitivo por un
+		objeto que encapsula mejor el concepto. 
+	* Categoría del refactoring
+		Este refactoring se clasifica como una Attribute Refactoring, ya que transforma una 
+		variable basada en un tipo primitivo hacia un tipo más específico y expresivo.
+	* Descripción
+		La refactorización consiste en sustituir una variable de tipo char utilizada para 
+		indicar el género del usuario por un tipo enum denominado Gender. Este cambio aporta 
+		mayor claridad al código y previene errores, al limitar los valores posibles a 
+		opciones explícitas (MALE, FEMALE). Además, se ha creado el nuevo tipo enumerado y 
+		se han actualizado todas las referencias previas al char en el código para adaptarlas 
+		al nuevo enum.
+	* Registro de cambios manuales
+		- Creación del enum Gender
+		- Todos los atributos, parámetros y retornos de tipo char que representan el género
+		se han sustituido por el tipo Gender.
+		- Todos los métodos que reciben char genero como parámetro, ahora reciben Gender genero.
+		- Se elimina cualquier validación de 'M' o 'W' por Gender.MALE o Gender.FEMALE.
+		- Las interfaces HealthCalc y HealthHospital se actualizan para ecibir Gender en lugar
+		de char.
+		- Se modifican todas las clases que implementan dichas interfaces para adaptarse a los
+		nuevos tipos.
+		- La clase Vista se actualiza para almacenar el género como un Gender y devolverlo a 
+		través del método getGeneroSeleccionado(). Los botones de selección de género asignan
+		Gender.MALE o Gender.FEMALE.
+		- Todas las pruebas automatizadas se actualizan para usar Gender en lugar de char,
+		eliminando pruebas que no son necesarias. 

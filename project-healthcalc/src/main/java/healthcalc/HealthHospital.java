@@ -14,7 +14,7 @@ public interface HealthHospital {
 	 * @return	  		The Basal Metabolic Rate of the person (kcal/day).
 	 * @throws Exception
 	 */
-	public double bmr(char genero, int edad, float altura, int peso) throws Exception;
+	public double bmr(Gender genero, int edad, float altura, int peso) throws Exception;
 	
 	/**
 	 * Calculate the ideal weight (IW) of a person following the Lorentz formula:
@@ -26,6 +26,6 @@ public interface HealthHospital {
 	 * @return 		 	The ideal weight of the person (kg).
 	 * @throws Exception 
 	 */
-	public int pesoIdeal(float altura, char genero) throws Exception;
+	public int pesoIdeal(float altura, Gender genero) throws Exception;
 	
 }

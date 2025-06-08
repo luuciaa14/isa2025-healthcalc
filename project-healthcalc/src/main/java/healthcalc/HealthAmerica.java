@@ -8,13 +8,13 @@ public class HealthAmerica extends HealthDecorator {
         super(c);
     }
 
-    public int pesoIdeal(float altura, char genero) throws Exception {
+    public int pesoIdeal(float altura, Gender genero) throws Exception {
         float a = altura/3.2808f;
         int p = c.pesoIdeal(a, genero); 
         return p;
     }
 
-    public double bmr(char genero, int edad, float altura, int peso) throws Exception {
+    public double bmr(Gender genero, int edad, float altura, int peso) throws Exception {
         float a = altura/3.2808f;
         int p = (int) (peso*1000/2.20462);
         double bmr = c.bmr(genero, edad, a, p);

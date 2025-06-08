@@ -18,7 +18,7 @@ public class Vista extends JFrame {
 	private JButton bCalcularTasaMetabolica;
 	private JButton bMujer;
 	private JButton bHombre;
-	private char generoSeleccionado = 'M';
+	private Gender generoSeleccionado = Gender.MALE;
 
 	/**
 	 * Launch the application.
@@ -66,7 +66,7 @@ public class Vista extends JFrame {
 		
 		bMujer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                generoSeleccionado = 'W';
+                generoSeleccionado = Gender.FEMALE;
                 bMujer.setBackground(Color.LIGHT_GRAY);
                 bHombre.setBackground(null);
             }
@@ -74,7 +74,7 @@ public class Vista extends JFrame {
 		
 		bHombre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                generoSeleccionado = 'M';
+                generoSeleccionado = Gender.MALE;
                 bHombre.setBackground(Color.LIGHT_GRAY);
                 bMujer.setBackground(null);
             }
@@ -189,7 +189,7 @@ public class Vista extends JFrame {
         return bCalcularTasaMetabolica;
     }
     
-    public char getGeneroSeleccionado() {
+    public Gender getGeneroSeleccionado() {
     	return generoSeleccionado;
     }
 	

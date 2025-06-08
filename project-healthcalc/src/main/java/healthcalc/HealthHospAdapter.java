@@ -8,7 +8,7 @@ public class HealthHospAdapter implements HealthHospital {
         c = HealthCalcImpl.getInstancia();
     }
 
-    public int pesoIdeal(float altura, char genero) {
+    public int pesoIdeal(float altura, Gender genero) {
         
         float cm = altura*100;
 
@@ -22,7 +22,7 @@ public class HealthHospAdapter implements HealthHospital {
         }
     }
 
-    public double bmr(char genero, int edad, float altura, int peso){
+    public double bmr(Gender genero, int edad, float altura, int peso){
 
         float cm = altura*100;
         float kg = peso/1000;

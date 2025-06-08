@@ -16,11 +16,11 @@ public class HealthCalcTest {
 		// Arrange:
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(20, 'M'));
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(270, 'M'));
+		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(20, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(270, Gender.MALE));
 		// Act & Assert (basalMetabolicRate):
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 20, 25, 'M'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 270, 25, 'M'));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 20, 25, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 270, 25, Gender.MALE));
 	}
 
 	@Test
@@ -29,13 +29,13 @@ public class HealthCalcTest {
 		// Arrange:
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
-		assertDoesNotThrow(() -> c.idealWeight(30, 'M'));
-		assertDoesNotThrow(() -> c.idealWeight(170, 'M'));
-		assertDoesNotThrow(() -> c.idealWeight(250, 'M'));
+		assertDoesNotThrow(() -> c.idealWeight(30, Gender.MALE));
+		assertDoesNotThrow(() -> c.idealWeight(170, Gender.MALE));
+		assertDoesNotThrow(() -> c.idealWeight(250, Gender.MALE));
 		// Act & Assert (basalMetabolicRate):
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 30, 25, 'M'));
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, 'M'));
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 250, 25, 'M'));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 30, 25, Gender.MALE));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, Gender.MALE));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 250, 25, Gender.MALE));
 	}
 
 	@Test
@@ -43,16 +43,7 @@ public class HealthCalcTest {
 	public void testInvalidGender(){
 		// Arrange:
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
-		// Act & Assert (idealBodyWeight):
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'A'));
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'B'));
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'm'));
-		assertThrows(IllegalArgumentException.class, () -> c.idealWeight(170, 'w'));
-		// Act & Assert (basalMetabolicRate):
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 25, 'A'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 25, 'B'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 25, 'm'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 25, 'w'));
+		
 	}
 
 	@Test
@@ -61,11 +52,11 @@ public class HealthCalcTest {
 		// Arrange
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert (idealBodyWeight):
-		assertDoesNotThrow(() -> c.idealWeight(170, 'M'));
-		assertDoesNotThrow(() -> c.idealWeight(170, 'W'));
+		assertDoesNotThrow(() -> c.idealWeight(170, Gender.MALE));
+		assertDoesNotThrow(() -> c.idealWeight(170, Gender.FEMALE));
 		// Act & Assert (basalMetabolicRate):
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, 'M'));
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, 'W'));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, Gender.MALE));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, Gender.FEMALE));
 	}
 
 	@Test
@@ -74,8 +65,8 @@ public class HealthCalcTest {
 		// Arrange
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(2, 170, 25, 'M'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(450, 170, 25, 'M'));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(2, 170, 25, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(450, 170, 25, Gender.MALE));
 	}
 
 	@Test
@@ -84,8 +75,8 @@ public class HealthCalcTest {
 		// Arrange
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
-		assertDoesNotThrow(()-> c.basalMetabolicRate(20, 170, 25, 'M'));
-		assertDoesNotThrow(()-> c.basalMetabolicRate(150, 170, 25, 'M'));
+		assertDoesNotThrow(()-> c.basalMetabolicRate(20, 170, 25, Gender.MALE));
+		assertDoesNotThrow(()-> c.basalMetabolicRate(150, 170, 25, Gender.MALE));
 	}
 
 	@Test
@@ -94,8 +85,8 @@ public class HealthCalcTest {
 		// Arrange
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 0, 'M'));
-		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 130, 'M'));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 0, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, () -> c.basalMetabolicRate(70, 170, 130, Gender.MALE));
 	}
 
 	@Test
@@ -104,8 +95,8 @@ public class HealthCalcTest {
 		// Arrange
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
 		// Act & Assert:
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, 'M'));
-		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 50, 'M'));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 25, Gender.MALE));
+		assertDoesNotThrow(() -> c.basalMetabolicRate(70, 170, 50, Gender.MALE));
 	}
 
 }

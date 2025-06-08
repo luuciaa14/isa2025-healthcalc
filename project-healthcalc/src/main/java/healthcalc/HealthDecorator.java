@@ -9,12 +9,12 @@ public class HealthDecorator implements HealthHospital {
         this.c = c;
     }
 
-    public int pesoIdeal(float altura, char genero) throws Exception {
+    public int pesoIdeal(float altura, Gender genero) throws Exception {
         float a = altura*1000;
         return c.pesoIdeal(a, genero);
     }
 
-    public double bmr(char genero, int edad, float altura, int peso) throws Exception {
+    public double bmr(Gender genero, int edad, float altura, int peso) throws Exception {
         float a = altura*1000;
         int p = peso/1000;
         double bmr = c.bmr(genero, edad, a, p);
