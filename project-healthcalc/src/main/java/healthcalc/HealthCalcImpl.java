@@ -13,6 +13,14 @@ public class HealthCalcImpl implements HealthCalc {
         return instancia;
     }
 
+    public float idealWeight(Person person) throws Exception {
+        return idealWeight(person.getHeight(), person.getGender());
+    }
+
+    public float basalMetabolicRate(Person person) throws Exception {
+        return basalMetabolicRate(person.getWeight(), person.getHeight(), person.getAge(), person.getGender());
+    }
+
     public float idealWeight(int height, Gender gender) throws Exception {
         // Verificar altura
         if(height<30 || height>250){

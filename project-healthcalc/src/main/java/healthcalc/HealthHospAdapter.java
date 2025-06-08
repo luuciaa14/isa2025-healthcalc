@@ -8,12 +8,13 @@ public class HealthHospAdapter implements HealthHospital {
         c = HealthCalcImpl.getInstancia();
     }
 
-    public int pesoIdeal(float altura, Gender genero) {
+    public int pesoIdeal(Person person) {
         
-        float cm = altura*100;
+        float cm = person.getHeight()*100;
+        Person adap = new Person((int) cm, 0f, 0, person.getGender());
 
         try{
-            float pesoId = c.idealWeight((int) cm, genero);
+            float pesoId = c.idealWeight(adap);
             return (int) pesoId;
         } catch (Exception e){
             System.err.println("Error: " + e.getMessage());
@@ -22,14 +23,14 @@ public class HealthHospAdapter implements HealthHospital {
         }
     }
 
-    public double bmr(Gender genero, int edad, float altura, int peso){
+    public double bmr(Person person){
 
-        float cm = altura*100;
-        float kg = peso/1000;
+        float cm = person.getHeight()*100;
+        float kg = person.getWeight()/1000;
+        Person adap = new Person((int) cm, kg, person.getAge(), person.getGender());
 
         try{
-            float bmr = c.basalMetabolicRate(kg, (int) cm, edad, genero);
-            return (double) bmr;
+            return c.basalMetabolicRate(adap);
         } catch (Exception e){
             System.err.println("Error: " + e.getLocalizedMessage());
             e.printStackTrace();

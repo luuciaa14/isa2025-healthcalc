@@ -26,54 +26,54 @@ public class HealthStatsProxy implements HealthHospital, HealthStats {
         mujeresBMR = 0;
     }
 
-    public int pesoIdeal(float altura, Gender genero) throws Exception {
-        if (genero == Gender.MALE) {
+    public int pesoIdeal(Person person) throws Exception {
+        if (person.getGender() == Gender.MALE) {
             hombresIdealWeight++;
         } else {
             mujeresIdealWeight++;
         }
-        alturaIdealWeight += altura;
+        alturaIdealWeight += person.getHeight();
 
-        return c.pesoIdeal(altura, genero);
+        return c.pesoIdeal(person);
     }
 
-    public double bmr(Gender genero, int edad, float altura, int peso) throws Exception {
-        if (genero == Gender.MALE) {
+    public double bmr(Person person) throws Exception {
+        if (person.getGender() == Gender.MALE) {
             hombresBMR++;
         } else {
             mujeresBMR++;
         }
-        this.edad += edad;
-        alturaBMR += altura;
-        this.peso += peso;
-        bmr += c.bmr(genero, edad, altura, peso);
+        this.edad += person.getAge();
+        alturaBMR += person.getHeight();
+        this.peso += person.getWeight();
 
-        return c.bmr(genero, edad, altura, peso);
+        double valorBMR = c.bmr(person);
+        this.bmr += valorBMR;
+        return valorBMR;
     }
 
     public float alturaMedia() {
-        float alturaM = (alturaBMR + alturaIdealWeight) / (mujeresIdealWeight + hombresIdealWeight + mujeresBMR + hombresBMR);
-        return alturaM;
+        return (alturaBMR + alturaIdealWeight) / (numTotalPacientes() + hombresIdealWeight + mujeresIdealWeight);
     }
 
     public float pesoMedio() {
-        return peso / (hombresBMR + mujeresBMR);
+        return peso / numTotalPacientes();
     }
 
     public float edadMedia() {
-        return edad / (hombresBMR + mujeresBMR);
+        return edad / numTotalPacientes();
     }
 
     public float bmrMedio() {
-        return bmr / (hombresBMR + mujeresBMR);
+        return bmr / numTotalPacientes();
     }
 
-    public int numSexoH() {
-        return hombresBMR + hombresIdealWeight;
-    }
-
-    public int numSexoM() {
-        return mujeresBMR + mujeresIdealWeight;
+    public int numSexo(Gender genero) {
+        if(genero== Gender.MALE) {
+            return hombresIdealWeight + hombresBMR;
+        } else {
+            return mujeresIdealWeight + mujeresBMR;
+        }
     }
 
     public int numTotalPacientes() {

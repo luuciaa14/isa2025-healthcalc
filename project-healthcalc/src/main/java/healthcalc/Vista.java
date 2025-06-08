@@ -192,5 +192,12 @@ public class Vista extends JFrame {
     public Gender getGeneroSeleccionado() {
     	return generoSeleccionado;
     }
+
+	public Person getPerson() { // MODIFICADA
+		int altura = Integer.parseInt(getTfAltura().getText());
+		float peso = Float.parseFloat(getTfPeso().getText());
+		int edad = Integer.parseInt(getTfEdad().getText());
+		return new Person(altura, peso, edad, generoSeleccionado);
+	}
 	
 }

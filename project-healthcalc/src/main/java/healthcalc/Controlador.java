@@ -19,6 +19,7 @@ public class Controlador {
 				try {
 					int altura = Integer.parseInt(vista.getTfAltura().getText());
 					Gender genero = vista.getGeneroSeleccionado();
+					Person persona = new Person(altura, 0f, 0, genero);
 					float pesoIdeal = modelo.idealWeight(altura, genero);
 					vista.getTfPesoIdeal().setText(String.format("%.2f", pesoIdeal));
 				} catch (Exception ex) {
@@ -35,6 +36,7 @@ public class Controlador {
 					int altura = Integer.parseInt(vista.getTfAltura().getText());
 					int edad = Integer.parseInt(vista.getTfEdad().getText());
 					Gender genero = vista.getGeneroSeleccionado();
+					Person persona = new Person(altura, peso, edad, genero);
 					float tasaMetabolica = modelo.basalMetabolicRate(peso, altura, edad, genero);
 					vista.getTfTasaMetabolica().setText(String.format("%.2f", tasaMetabolica));
 				} catch (Exception ex) {

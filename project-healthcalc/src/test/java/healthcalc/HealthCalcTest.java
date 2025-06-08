@@ -43,7 +43,9 @@ public class HealthCalcTest {
 	public void testInvalidGender(){
 		// Arrange:
 		HealthCalcImpl c = HealthCalcImpl.getInstancia();
-		
+		// Act & Assert:
+		assertThrows(NullPointerException.class, () -> c.idealWeight(170, null));
+		assertThrows(NullPointerException.class, () -> c.basalMetabolicRate(70, 170, 25, null));
 	}
 
 	@Test

@@ -8,14 +8,13 @@ public class HealthEuropa extends HealthDecorator {
         super(c);
     }
 
-    public int pesoIdeal(float altura, Gender genero) throws Exception {
-        int pesoId = c.pesoIdeal(altura, genero);
-        return pesoId;
+    public int pesoIdeal(Person person) throws Exception {
+        return c.pesoIdeal(person);
     }
 
-    public double bmr(Gender genero, int edad, float altura, int peso) throws Exception {
-        double bmr = c.bmr(genero, edad, altura, peso);
-        msj(altura, peso, bmr);
+    public double bmr(Person person) throws Exception {
+        double bmr = c.bmr(person);
+        msj(person.getHeight(), (int) person.getWeight(), bmr);
         return bmr;
     }
 

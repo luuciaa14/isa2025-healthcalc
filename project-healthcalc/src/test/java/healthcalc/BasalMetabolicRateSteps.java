@@ -7,10 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BasalMetabolicRateSteps {
     private HealthCalcImpl healthCalc;
-    private float weight;
-    private int height;
-    private int age;
-    private Gender gender;
+    private Person person;
     private float result;
     private Exception exception;
 
@@ -20,16 +17,19 @@ public class BasalMetabolicRateSteps {
 
     @Given("a {word} weighing {float} kg, with a height of {int} cm, and aged {int}")
     public void aPersonWithWeightHeightAge(String genderStr, float weight, int height, int age) {
-        this.weight = weight;
-        this.height = height;
-        this.age = age;
-        this.gender = genderStr.equalsIgnoreCase("man") ? Gender.MALE : Gender.FEMALE;
+        Gender gender = genderStr.equalsIgnoreCase("man") ? Gender.MALE : Gender.FEMALE;
+        person = new Person(height, weight, age, gender);
     }
 
     @When("I calculate the BMR")
     public void iCalculateTheBMR() {
         try {
-            result = healthCalc.basalMetabolicRate(weight, height, age, gender);
+            result = healthCalc.basalMetabolicRate(
+                person.getWeight(),
+                person.getHeight(),
+                person.getAge(),
+                person.getGender()
+            );
         } catch (Exception e) {
             exception = e;
         }
@@ -42,13 +42,18 @@ public class BasalMetabolicRateSteps {
 
     @Given("a person weighing {float} kg")
     public void aPersonWeighing(float weight) {
-        this.weight = weight;
+        person = new Person(0, weight, 0, Gender.MALE);
     }
 
     @When("I try to calculate the BMR")
     public void iTryToCalculateTheBMR() {
         try {
-            result = healthCalc.basalMetabolicRate(weight, height, age, gender);
+            result = healthCalc.basalMetabolicRate(
+                person.getWeight(),
+                person.getHeight(),
+                person.getAge(),
+                person.getGender() 
+            );
         } catch (Exception e) {
             exception = e;
         }

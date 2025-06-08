@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IdealWeightSteps {
     private HealthCalcImpl healthCalc;
-    private int height;
-    private Gender gender;
+    private Person person;
     private float result;
     private Exception exception;
 
@@ -18,14 +17,17 @@ public class IdealWeightSteps {
 
     @Given("a {word} with a height of {int} cm")
     public void aPersonWithHeight(String genderStr, int height) {
-        this.height = height;
-        this.gender = genderStr.equalsIgnoreCase("man") ? Gender.MALE : Gender.FEMALE;
+        Gender gender = genderStr.equalsIgnoreCase("man") ? Gender.MALE : Gender.FEMALE;
+        person = new Person(height, 0, 0, gender);
     }
 
     @When("I calculate the ideal weight")
     public void iCalculateTheIdealWeight() {
         try {
-            result = healthCalc.idealWeight(height, gender);
+            result = healthCalc.idealWeight(
+                person.getHeight(),
+                person.getGender()
+            );
         } catch (Exception e) {
             exception = e;
         }
