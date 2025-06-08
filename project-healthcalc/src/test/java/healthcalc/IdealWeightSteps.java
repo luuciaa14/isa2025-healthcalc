@@ -24,10 +24,7 @@ public class IdealWeightSteps {
     @When("I calculate the ideal weight")
     public void iCalculateTheIdealWeight() {
         try {
-            result = healthCalc.idealWeight(
-                person.getHeight(),
-                person.getGender()
-            );
+            result = healthCalc.idealWeight(person);
         } catch (Exception e) {
             exception = e;
         }

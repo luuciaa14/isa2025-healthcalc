@@ -74,3 +74,27 @@ REFACTORINGS
 		- Todas las clases de pruebas se refactorizan para construir un objeto person en lugar de pasar
 		valores sueltos.
 		- La validación de rangos y lógica condicional se raliza a través de person.get.
+		
+3. Interfaces CardivarcularMetrics y MetabolicMetrics
+
+	* Bad Smell
+		Este refactoring responde al problema conocido como Large Class (Clase Dios). La clase original
+		estaba asumiendo múltiples responsabilidades al implementar tanto el cálculo del peso ideal como
+		la tasa metabólica basal, violando así el principio de responsabilidad única.
+	* Refactorings aplicados
+		Se ha aplicado el patrón de refactorización Extract Class, dividiendo las responsabilidades en 
+		nuevas unidades funcionales. En lugar de mantener métodos con funcionalidades dispares en una sola
+		clase, se han creado interfaces específicas que agrupan métodos coherentes entre sí.
+	* Categoría del refactoring
+		Este es un Class Refactoring, ya que implica la creación de nuevas clases o interfaces para redistribuir
+		funcionalidades existentes de forma más cohesiva y desacoplada.
+	* Descripción
+		- CardivarcularMetrics define el método relacionado con el peso ideal.
+		- MetabolicMetrics define el método de cálculo de la tasa metabólica basal.
+	* Registro de cambios manuales
+		- Se han creado dos nuevas interfaces CardiovascualrMetrics y MetabolicMetrics.
+		- La clase HealthCalcImpl implementa ambas interfaces.
+		- El método idealWeight se ha trasladado a la interfaz CardiovarcularMetrics.
+		- El método basalMetabolicRate se ha trasladado a la interfaz MetabolicMetrics.
+		- Todas las clases que necesitaban acceder a estas funcionalidades has sido actualizadas para hacer
+		casting o declarar las dependencias con el tipo correcto.
