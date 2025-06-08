@@ -187,3 +187,66 @@ El patrón Proxy ha sido elegido ya que nos permite proporcionar un sustituto pa
 ## Patron Decorator
 El patrón Proxy ha sido elegido ya que nos permite añadir nuevos comportamientos a los objetos, colocando estos objetos dentro de otros envolventes especiales que contienen los comportamientos. De esta manera, añadimos los nuevos comportamientos de nuestra calcualdora, dependiendo de si se va a usar en América o en Europa.
 ![Patron Adapter](design_patterns/PatronDecorator.png)
+
+# PRÁCTICA 7
+
+## 1. Género (char -> enum)
+
+* **Bad Smell**
+	- Este refactoring aborda principalmente el problema conocido como Primitive Obssesion, que consiste en el uso excesivo de tipos primitivos para representar información que podría encapsularse mejor mediante tipos específicos o estructuras más apropiadas.
+* **Refactorings aplicados**
+	- Introduce Enum: Se ha introducido un tipo enum para representar un conjunto limitado de valores concretos.
+	- Replace Value with Object: Se ha sustituido el uso de un valor primitivo por un objeto que encapsula mejor el concepto. 
+* **Categoría del refactoring**
+	- Este refactoring se clasifica como una Attribute Refactoring, ya que transforma una variable basada en un tipo primitivo hacia un tipo más específico y expresivo.
+* **Descripción**
+	- La refactorización consiste en sustituir una variable de tipo char utilizada para indicar el género del usuario por un tipo enum denominado Gender. Este cambio aporta mayor claridad al código y previene errores, al limitar los valores posibles a opciones explícitas (MALE, FEMALE). Además, se ha creado el nuevo tipo enumerado y se han actualizado todas las referencias previas al char en el código para adaptarlas al nuevo enum.
+* **Registro de cambios manuales**
+	- Creación del enum Gender
+	- Todos los atributos, parámetros y retornos de tipo char que representan el género se han sustituido por el tipo Gender.
+	- Todos los métodos que reciben char genero como parámetro, ahora reciben Gender genero.
+	- Se elimina cualquier validación de 'M' o 'W' por Gender.MALE o Gender.FEMALE.
+	- Las interfaces HealthCalc y HealthHospital se actualizan para ecibir Gender en lugar de char.
+	- Se modifican todas las clases que implementan dichas interfaces para adaptarse a los nuevos tipos.
+	- La clase Vista se actualiza para almacenar el género como un Gender y devolverlo a través del método getGeneroSeleccionado(). Los botones de selección de género asignan Gender.MALE o Gender.FEMALE.
+	- Todas las pruebas automatizadas se actualizan para usar Gender en lugar de char, eliminando pruebas que no son necesarias. 
+
+## 2. Height, weight, age, gender -> Person
+
+* **Bad Smell**
+	- Este refactoring aborda el problema conocido como Data Clumps, que se da cuaddo un conjunto de datos aparece repetidamente agrupado en múltiples métodos y clases, lo cual indica que deberían encapsularse juntos en una clase dedicada.
+* **Refactorings aplicados**
+	- Move Field: Se han trasladado los atributos height, wieght, age y gender desde diversas clases hacia una nueva clase Person.
+	- Encapsulate Field: Los nuevos atributos de Person se han encapsulado mediante métodos de acceso, asegurando así un control adecuado sobre el acceso y modificación de los datos.
+* **Categoría del refactoring**
+	- Este refactoring se clasifica como un Class Refactoring, ya que consiste en reoganizar la estructura del sistema introduciendo una nueva clase que encapsula responsabilidades previamente dispersas.
+* **Descripción**
+	- Se ha creado una nueva clase llamada Person, que agrupa de forma lógica los atributos height, weight, age y gender. La refactorización implicó actualizar múltiples clases para que ahora trabajen con una instancia de Person en lugar de pasar estos campos como parámetros individuales. este cambio mejora la legibilidad y claridad del código, reduce la duplicación de parámetros, favorece la reutilización de lógica relacionada con el usuario y realiza los datos personales en un único punto del sistema.
+* **Registro de cambios manuales**
+	- Creación de la clase Person que encapsula los atributos height, weight, age y gender.
+	- Todos los métodos que recibían como parámetros combianciones de height, weight, age y gender ahora reciben un único objeto Person.
+	- Las interfaces se actualizan apra que sus métodos reciban un Person como parámetro. Las clases que implementan estas interfaces adaptan su implementación.
+	- La lógica de validación y cálculo reutiliza los métodos originales usando getters de Person, eliminando la necesidad de pasar atributos individualmente.
+	- La clase Vista añade el método getPerson() que construye y devuelve una instancia de Person.
+	- Las llamadas desde Controlador se modifican para usar getPerson().
+	- Todas las clases se adaptan para trabajar con Person y se realizan las conversiones necesarias dentro del objeto o creando una nueva instancia adaptada.
+	- Todas las clases de pruebas se refactorizan para construir un objeto person en lugar de pasar valores sueltos.
+	- La validación de rangos y lógica condicional se raliza a través de person.get.
+		
+## 3. Interfaces CardivarcularMetrics y MetabolicMetrics
+
+* **Bad Smell**
+	- Este refactoring responde al problema conocido como Large Class (Clase Dios). La clase original estaba asumiendo múltiples responsabilidades al implementar tanto el cálculo del peso ideal como la tasa metabólica basal, violando así el principio de responsabilidad única.
+* **Refactorings aplicados**
+	- Se ha aplicado el patrón de refactorización Extract Class, dividiendo las responsabilidades en  nuevas unidades funcionales. En lugar de mantener métodos con funcionalidades dispares en una sola clase, se han creado interfaces específicas que agrupan métodos coherentes entre sí.
+* **Categoría del refactoring**
+	- Este es un Class Refactoring, ya que implica la creación de nuevas clases o interfaces para redistribuir funcionalidades existentes de forma más cohesiva y desacoplada.
+* **Descripción**
+	- CardivarcularMetrics define el método relacionado con el peso ideal.
+	- MetabolicMetrics define el método de cálculo de la tasa metabólica basal.
+* **Registro de cambios manuales**
+	- Se han creado dos nuevas interfaces CardiovascualrMetrics y MetabolicMetrics.
+	- La clase HealthCalcImpl implementa ambas interfaces.
+	- El método idealWeight se ha trasladado a la interfaz CardiovarcularMetrics.
+	- El método basalMetabolicRate se ha trasladado a la interfaz MetabolicMetrics.
+	- Todas las clases que necesitaban acceder a estas funcionalidades has sido actualizadas para hacer casting o declarar las dependencias con el tipo correcto.
